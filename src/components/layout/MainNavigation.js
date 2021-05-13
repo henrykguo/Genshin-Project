@@ -4,7 +4,7 @@ import classes from "./MainNavigation.module.css";
 const MainNavigation = () => {
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>Genshin Characters and Weapons</div>
+      <div className={classes.logo}>Genshin Stuff?</div>
       <nav className={classes.nav}>
         <ul>
           <li>

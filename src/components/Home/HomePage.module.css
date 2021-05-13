@@ -1,0 +1,60 @@
+.heading {
+  font-size: 40px;
+  color: white;
+  background-color: rgb(219, 102, 102);
+  padding: 1rem;
+}
+
+.image {
+  border-radius: 5px;
+  padding: 3rem;
+  width: 100%;
+  max-width: 70rem;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.image p {
+  font-size: 2.5rem;
+}
+
+.image figcaption {
+  font-style: italic;
+  font-size: 1.5rem;
+  text-align: center;
+  color: rgb(214, 68, 68);
+}
+
+.stars {
+  width: 30%;
+}
+
+.character {
+    width: 90%;
+}
+
+.centered {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  cursor: pointer;
+  font: inherit;
+  
+  border: none;
+  background-color: none;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  background-color: #dd4020;
+  color: white;
+}
+
+.btn:hover,
+.btn:active {
+    background-color: white;
+    color: rgb(214, 68, 68);
+}

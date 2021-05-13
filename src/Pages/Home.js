@@ -2,6 +2,7 @@ import { Fragment, useCallback, useEffect, useState } from "react";
 import HomePage from "../components/Home/HomePage";
 
 const Home = () => {
+  const [displayCharacters, setDisplayCharacters] = useState([]);
   const [displayChar, setDisplayChar] = useState();
   const [isDisplayChar, setIsDisplayChar] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,21 +22,18 @@ const Home = () => {
 
       const characterData = [];
 
-      for (const key in data) {
-        if (data[key].rarity === "5") {
+      for (const key in data) {        
           characterData.push({
             id: key,
             character: data[key].item,
             description: data[key].description,
-            rarity: 5,
+            rarity: data[key].rarity,
             image: data[key].image,
           });
-        }
       }
+      setDisplayCharacters(characterData);
       const count = characterData.length;
-      console.log(count);
       const index = Math.floor(Math.random() * count);
-      console.log(index);
       const character = characterData[index];
       setDisplayChar(character);
       setIsDisplayChar(true);
@@ -51,10 +49,24 @@ const Home = () => {
     fetchCharacterHandler();
   }, [fetchCharacterHandler]);
 
+  const loadNewPictureHandler = () => {
+    const count = displayCharacters.length;
+    let index = Math.floor(Math.random() * count);
+    while (displayCharacters[index] === displayChar && count !== 1) {
+      index = Math.floor(Math.random() * count);
+    }
+    setDisplayChar(displayCharacters[index]);
+  };
+
   return (
     <Fragment>
       {!isDisplayChar && <button onClick={fetchCharacterHandler}></button>}
-      {!isLoading && !error && isDisplayChar && <HomePage character={displayChar}/>}
+      {!isLoading && !error && isDisplayChar && (
+        <HomePage
+          character={displayChar}
+          changePicture={loadNewPictureHandler}
+        />
+      )}
       {isLoading && <h1>LOADING...</h1>}
     </Fragment>
   );
